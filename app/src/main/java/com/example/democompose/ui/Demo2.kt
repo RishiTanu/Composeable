@@ -28,19 +28,24 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.democompose.R
 import com.example.democompose.theme.ComposeClass1Theme
 
 @Composable
 fun UserInteraction(
+    navController: NavHostController? = null,
     modifier: Modifier = Modifier
 ) {
+
     var count by remember {
         mutableIntStateOf(0)
     }
+
     /*var text = remember {
         mutableStateOf("")
     }*/
+
     var text by remember {
         mutableStateOf("")
     }
@@ -85,6 +90,28 @@ fun UserInteraction(
             )
             Text("CLick Me")
         }
+        //conditional composable
+        navController?.let {
+            Button(
+                onClick = {
+                    val parameter = "From User interface to Screen2"
+                    navController.navigate("screen2?parameter=$parameter")
+                },
+                modifier = Modifier.align(Alignment.CenterEnd)
+            ) {
+                Icon(
+                    painter = painterResource(androidx.core.R.drawable.ic_call_answer),
+                    contentDescription = "",
+                    // tint = Color.Unspecified
+                )
+                Image(
+                    painter = painterResource(R.drawable.ic_camera),
+                    contentDescription = "",
+                    modifier=Modifier.clip(CircleShape)
+                )
+                Text("Navigate to Screen2")
+            }
+        }
         ListViewDemo(
             items,
             modifier = Modifier.align(Alignment.BottomCenter)
@@ -109,11 +136,13 @@ fun TextFieldDemo(
 
 @Composable
 fun ListViewDemo(listOfString: List<String>, modifier: Modifier = Modifier) {
+    //simple list
     /*Column {
         listOfString.forEach {
             Text(text = it)
         }
     }*/
+    //lazyColumn
     LazyColumn(modifier) {
         /*items(listOfString){
             Text(it)
@@ -122,6 +151,7 @@ fun ListViewDemo(listOfString: List<String>, modifier: Modifier = Modifier) {
             Text(item)
         }
     }
+    //gridView
     LazyVerticalGrid(columns = GridCells.Fixed(3)) {
 
     }
@@ -143,6 +173,7 @@ fun ListViewDemoPreview() {
     }
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun UserInteractionPreview() {
@@ -150,3 +181,4 @@ fun UserInteractionPreview() {
         UserInteraction(modifier = Modifier.fillMaxSize())
     }
 }
+*/

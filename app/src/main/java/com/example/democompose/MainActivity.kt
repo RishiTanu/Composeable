@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.democompose.theme.ComposeClass1Theme
+import com.example.democompose.ui.AppHome
 import com.example.democompose.ui.Greeting
 import com.example.democompose.ui.UserInteraction
 
@@ -19,17 +20,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeClass1Theme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
                 ) {
                     //Greeting("Android", modifier = Modifier.fillMaxSize())
-                    UserInteraction(modifier = Modifier.fillMaxSize())
+                   // UserInteraction(modifier = Modifier.fillMaxSize())
+                    AppHome()
                 }
             }
         }
     }
 }
 
-
+//this is for simple preview on IDE
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {

@@ -19,7 +19,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 //        }
 //    }
 
+    //constraint layput
     ConstraintLayout(modifier) {
+        //defining position references....
         val (t1, t2, t3, t4, t5, t6) = createRefs()
         Text(
             text = "Hello $name!", modifier = Modifier.constrainAs(t1) {
@@ -47,6 +49,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 .border(2.dp, Color.Black, shape = RoundedCornerShape(3.dp)),
             style = MaterialTheme.typography.bodyMedium
         )
+        //center view....
         Text(
             text = "Hello $name!", modifier = Modifier.constrainAs(t3) {
                 centerTo(parent)
@@ -66,6 +69,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         )
     }
 }
+//box view...
 /*@Composable
 fun Greeting(name: String,modifier:  Modifier = Modifier) {
     Box(modifier = Modifier.height(50.dp).width(500.dp)) {
