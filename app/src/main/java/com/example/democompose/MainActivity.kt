@@ -10,13 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.democompose.theme.ComposeClass1Theme
-import com.example.democompose.ui.AppHome
+import com.example.democompose.ui.EffectViewModel
+import com.example.democompose.ui.Effects
 import com.example.democompose.ui.Greeting
-import com.example.democompose.ui.UserInteraction
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val effectViewModel = EffectViewModel()
         setContent {
             ComposeClass1Theme {
                 Surface(
@@ -25,7 +26,9 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //Greeting("Android", modifier = Modifier.fillMaxSize())
                    // UserInteraction(modifier = Modifier.fillMaxSize())
-                    AppHome()
+                   // AppHome()
+                    //BottomSheets()
+                    Effects(effectViewModel)
                 }
             }
         }
